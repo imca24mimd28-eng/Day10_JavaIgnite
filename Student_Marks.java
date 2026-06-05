@@ -1,12 +1,32 @@
-/*
-Student Marks System (Safe Input)
+public class StringProcessor {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
 
-Create a program that:
+        try {
+            System.out.print("Enter a String: ");
+            String str = sc.nextLine();
 
-Stores 5 student marks in an array
-Takes index input from user
-Displays mark
-Add Exception Handling:
-Handle invalid index
-Handle invalid input (if user enters text instead of number)
-*/
+            System.out.print("Enter start index for substring: ");
+            int start = sc.nextInt();
+
+            System.out.print("Enter end index for substring: ");
+            int end = sc.nextInt();
+
+            System.out.print("Enter index for charAt: ");
+            int index = sc.nextInt();
+
+            String sub = str.substring(start, end);
+            char ch = str.charAt(index);
+
+            System.out.println("Substring: " + sub);
+            System.out.println("Character at index " + index + ": " + ch);
+        }
+        catch (StringIndexOutOfBoundsException e) {
+            System.out.println("Invalid index handled safely");
+        }
+        finally {
+            sc.close();
+        }
+    }
+}
+
