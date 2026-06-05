@@ -1,13 +1,39 @@
-/*
-Banking System (Real-world Simulation)
+public class BankingSystem {
+	
+	    public static void main(String[] args) {
+	        Scanner sc = new Scanner(System.in);
 
-Create a program that:
+	        try {
+	            System.out.print("Enter Account Balance: ");
+	            double balance = sc.nextDouble();
 
-Takes account balance
-Takes withdrawal amount
-Rules:
-If withdrawal > balance → throw and handle exception
-If invalid input → handle exception
-Output:
-Withdrawal successful OR Insufficient balance
-*/
+	            System.out.print("Enter Withdrawal Amount: ");
+	            double withdraw = sc.nextDouble();
+
+	            if (withdraw < 0) {
+	                throw new RuntimeException("Invalid Withdrawal Amount");
+	            }
+
+	            if (withdraw > balance) {
+	                throw new InsufficientBalanceException("Insufficient Balance");
+	            }
+
+	            balance = balance - withdraw;
+
+	            System.out.println("Withdrawal Successful");
+	            System.out.println("Remaining Balance: " + balance);
+	        }
+
+	        catch (InputMismatchException e) {
+	            System.out.println("Invalid Input");
+	        }
+
+	        catch (InsufficientBalanceException e) {
+	            System.out.println(e.getMessage());
+	        }
+
+	        sc.close();
+	    }
+	}
+
+	    
